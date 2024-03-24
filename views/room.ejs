@@ -5,21 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        const Room_ID = "<%= roomId %>"
-
-        function put_id(){
-            let welcome_text = document.getElementById('welcome')
-            welcome_text.innerText  = `${welcome_text.innerText } ${Room_ID}`
-        }
+        const RoomId = "<%= roomId %>"
     </script>
 </head>
-<body onload="put_id()">
+<body>
     <header>
         <h1>Hi :D</h1>
     </header>
     <main>
         <h2 id="welcome">
             welcome to room: 
+        </h2>
+        <script src="/socket.io/socket.io.js" defer></script>
+        <script src="script.js" defer></script>
     </main>
 </body>
 </html>

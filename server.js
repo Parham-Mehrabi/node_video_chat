@@ -1,9 +1,14 @@
 const express = require('express');
-const http = require('http')
-const {v4:uuid_v4} = require('uuid')
+const http = require('http');
+const {v4:uuid_v4} = require('uuid');
+const socketIo = require('socket.io');
+
 const app = express();
 const server = http.Server(app);
 const port = process.env.NODE_PORT || 3000;
+const io = socketIo(server);
+ 
+
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -21,6 +26,11 @@ app.get('/:id', (req, res) => {
     res.render('room', data)
 })
 
+io.on("connection", socket => {
+    socket.on('join-room', (roomId, userId) => {
+        console.log(roomId, userId);
+    })
+})
 
 
 
