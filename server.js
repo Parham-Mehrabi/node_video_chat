@@ -1,6 +1,6 @@
 const express = require('express');
 const http = require('http')
-
+const {v4:uuid_v4} = require('uuid')
 const app = express();
 const server = http.Server(app);
 const port = process.env.NODE_PORT || 3000;
@@ -11,7 +11,14 @@ app.use(express.static('public'));
 
 
 app.get('/', (req, res) => {
-    res.render('room')
+    res.redirect(`/${uuid_v4()}`)
+})
+app.get('/:id', (req, res) => {
+    const id = req.params.id
+    const data = {
+        roomId: id
+    }
+    res.render('room', data)
 })
 
 

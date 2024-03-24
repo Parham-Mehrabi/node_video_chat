@@ -1,1 +1,25 @@
-<h1 style="text-align: center;">Hello Ejs</h1>
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const Room_ID = "<%= roomId %>"
+
+        function put_id(){
+            let welcome_text = document.getElementById('welcome')
+            welcome_text.innerText  = `${welcome_text.innerText } ${Room_ID}`
+        }
+    </script>
+</head>
+<body onload="put_id()">
+    <header>
+        <h1>Hi :D</h1>
+    </header>
+    <main>
+        <h2 id="welcome">
+            welcome to room: 
+    </main>
+</body>
+</html>
