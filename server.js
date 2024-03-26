@@ -30,7 +30,10 @@ io.on("connection", socket => {
     socket.on('join-room', (roomId, userId) => {
         console.log(roomId, userId);
         socket.join(roomId);
-        socket.broadcast.to(roomId).emit('userConnected', userId)
+        socket.broadcast.to(roomId).emit('userConnected', userId);
+        socket.on('disconnect', () => {
+            socket.broadcast.to(roomId).emit('userDisconnected', userId);
+        })
     })
 })
 
